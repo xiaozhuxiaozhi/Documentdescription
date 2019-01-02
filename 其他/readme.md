@@ -32,7 +32,7 @@
 
 ### css
 
--   css 编译器：less,sass, styles, postcss(推荐 cssnext)
+-   css 编译器：less,sass, styles, postcss(推荐 cssnext) autoplayflex cssnano
 -   css 格式化：reset.css normalize.css neat.css(推荐)
 -   css 分层理论：(oocss 方便后期维护) SMACSS，ACSS
 -   css:圣杯布局，动画，3d,bfc,ifc,gfc,
@@ -41,7 +41,7 @@
 
 ### js
 
-> -   框架 react, vue ,angular,zepto X-tag.js,moon.js san.js，apm.js, elm.js ...
+> -   框架 react, vue ,angular,zepto X-tag.js,moon.js san.js，apm.js, elm.js regx.js ...
 > -   函数式编程 underscore.js,lodash.js
 > -   es6：解构赋值，箭头函数，字符串模板，new Set(),new Map()，proxy, Reflect,Promise,class ....
 > -   巧用设计模式：命令模式、代理模式、单例模式、职责链模式、发布订阅者模式
@@ -60,7 +60,7 @@
 ### 其他
 
 -   图片： tiny 压缩， cssicon, 小图合并
--   编译工具：webpack ,gulp,rollup,grunt,parcel,fis (打包，压缩，合并，生成版本戳，cnd， babel 编译)
+-   编译工具：webpack ,gulp,rollup,grunt,parcel,fis (打包，压缩，合并，生成版本戳，cdn， babel 编译，深度 tree-shaking，开启多核 cpu 压缩处理)
 -   chrome : chrome 调试 ，性能插件 PageSpeed Insights for Chrome, prformance 工具的使用,使用 window.performance 分析性能瓶颈[分析地址](http://www.alloyteam.com/2015/09/explore-performance/)，跨域插件 Allow-Control-Allow-Origin:/\* ,
 -   Eruda:移动端调试插件
 -   离线缓存： localStorage (2.5MB 以上会卡顿 最大 5mb),local 扩容(postmessage)，cross-storage :本地库的扩容, crm 库
@@ -70,7 +70,7 @@
 
 -   TDD：测试驱动开发（Test-Driven Development）
 -   BDD：行为驱动开发（Behavior Driven Development）
-    > -   1，单元测试 (Mocha+chai) kaima+mocha
+    > -   1，单元测试 (Mocha+chai) kaima+mocha,jest
     > -   2，e2e 测试 selenium webdirver ,rize,nightwatchjs,
     > -   3，API 测试 mocha+chai (supertest) ,rize
     > -   4，UI 还原性测试 backstop.js 、uirecorder、 phantomcss,F2etest
@@ -79,18 +79,30 @@
 ### 上线阶段
 
 -   持续集成平台：Travis ci, jenkins
--   微服务 docker
+-   微服务 docker 容器技术
 -   部署工具：rsync,shell.js,yargs
 -   网站监测:pm2 塞满线程,进程守护
--   nginx: 负载均衡，反向代理，开启 gzip, etag，expire，
--   liunx: 免密登陆,配置 node 服务
+-   nginx: 负载均衡，反向代理，开启 gzip 压缩, etag，expire 缓存，
+-   liunx: ssh 免密登陆,配置 node 服务
 
 ### 性能优化
 
--   前端性能优化:小字为先，navigator.sendBeacon("a.php") 埋点测速， 雅虎军规， DNS prefetch
--   node 优化：内存泄漏 闭包，数组无线的扩大,Jimb Esser ,Dave Pacheco, Danny Coates, Felix Geisendörfer, Joyent ,memwatch+heapdump
--   没经过压力测试的 Node 代码基本只完成 10%
--   准确计算 QPS 未雨绸缪
--   合理利用压力测试工具
--   缓存 队列 内存泄露 耗时较长的代码
--   准确计算 QPS: wrk
+-   code：
+    > -   前端性能优化:小字为先，navigator.sendBeacon("a.php") 埋点测速， DNS prefetch
+    > -   雅虎军规
+    > -   简化页面标签, 减少重排 重绘
+    > -   精简 css uncss( 去除无用的 css)
+    > -   精简 js 代码 巧用数据结构与算法
+    > -   打包压缩合并 tree-shaking
+    > -   开启 cnd 加速(并行最多 5 个)。节约 cookie 带宽 节约主域名的连接数，优化页面响应速度
+    > -   开启页面懒加载
+    > -   缓存静态资源文件 localstrage
+-   nginx：
+    > -   nginx 开启 gzip 压缩 etag expires 缓存
+    > -   nginx 开启 反向代理 负载均衡
+-   node：
+    > -   合理利用压力测试工具
+    > -   缓存 队列 内存泄露 耗时较长的代码
+    > -   node 优化：内存泄漏 闭包，数组无线的扩大,Jimb Esser ,Dave Pacheco, Danny Coates, Felix Geisendörfer, Joyent ,memwatch+heapdump
+    > -   没经过压力测试的 Node 代码基本只完成 10%
+    > -   合理计算 QPS 未雨绸缪

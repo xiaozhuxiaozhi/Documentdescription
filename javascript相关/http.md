@@ -1,4 +1,4 @@
-## http 相关
+<!-- ## http 相关
 
 #### HTTP 协议 TCP 三次握手四次挥手 http2.0 https
 
@@ -134,6 +134,7 @@ img ,script,iframe,link,jsonp 、Hash、 cors、 webSocket、 postMessage
     proxy_pass http://web_mgrsys;
 ```
 
+
 ## chrome 相关
 
 #### preformance.timing
@@ -187,3 +188,4 @@ img ,script,iframe,link,jsonp 、Hash、 cors、 webSocket、 postMessage
 > 开启懒加载
 > 缓存静态资源文件
 > 开启 etag expires
+ -->
